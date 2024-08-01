@@ -3,15 +3,18 @@ import './ProductItem.css'
 import { assets } from '../../assets/assets'
 import { StoreContext } from '../../context/StoreContext'
 
-const ProductItem = ({id,name,oldprice,price,description,image}) => {
+import { Link } from 'react-router-dom';
 
-    const {cartItems, addToCart, removeFromCart, url} = useContext(StoreContext);
+const ProductItem = ({ id, name, oldprice, price, description, image }) => {
+  const { cartItems, addToCart, removeFromCart, url } = useContext(StoreContext);
 
 
   return (
     <div className='product-item'>
         <div className="product-item-img-container">
-            <img src={url+"/images/"+image} alt="" className="product-item-image" />
+        <Link to={`/product/${id}`} className='product-item-link'>
+          <img src={url + "/images/" + image} alt="" className="product-item-image" />
+        </Link>
             {!cartItems[id]
                 ?<img className='add' onClick={()=>addToCart(id)} src={assets.add_icon_white} alt="" />
                 :<div className='product-item-counter'>
@@ -21,6 +24,7 @@ const ProductItem = ({id,name,oldprice,price,description,image}) => {
                 </div>
             }
         </div>
+        <Link to={`/product/${id}`} className='product-item-link'>
         <div className="product-item-info">
             <div className="product-item-name-rating">
                 <p>{name}</p>
@@ -32,6 +36,7 @@ const ProductItem = ({id,name,oldprice,price,description,image}) => {
             <div className="product-item-oldprice">₹{oldprice}</div>
             </div>
         </div>
+        </Link>
     </div>
   )
 }

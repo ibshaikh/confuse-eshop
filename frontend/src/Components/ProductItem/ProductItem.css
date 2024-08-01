@@ -21,6 +21,10 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
+  overflow: hidden; /* Ensures overflow content is hidden */
+  display: -webkit-box; /* Set as a flex container */
+  -webkit-line-clamp: 2; /* Limit to two lines */
+  -webkit-box-orient: vertical; /* Vertical layout */
 }
 
 .product-item-name-rating p{
@@ -31,6 +35,10 @@
 .product-item-desc{
     color: #676767;
     font-size: 12px;
+    overflow: hidden; /* Ensures overflow content is hidden */
+    display: -webkit-box; /* Set as a flex container */
+    -webkit-line-clamp: 4; /* Limit to two lines */
+    -webkit-box-orient: vertical; /* Vertical layout */
 }
 
 .product-item-oldprice{
