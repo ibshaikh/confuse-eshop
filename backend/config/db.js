@@ -1,5 +1,10 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
 
-export const connectDB = async () =>{
-    await mongoose.connect('mongodb+srv://shaikhibram:confuse12345@cluster0.lqjawnx.mongodb.net/confuseshop').then(()=>console.log("Database Connected Successfully !"));
-}
+dotenv.config();
+
+export const connectDB = async () => {
+    await mongoose.connect(process.env.MONGODB_URI)
+        .then(() => console.log("Database Connected Successfully!"))
+        .catch((error) => console.error("Database connection error:", error));
+};
